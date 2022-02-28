@@ -2,7 +2,7 @@ import path from 'path';
 import { readdir, readFile } from 'fs/promises';
 
 import matter from 'gray-matter';
-import hljs from 'highlight.js/lib/core';
+import hljs from 'highlight.js';
 import { customAlphabet } from 'nanoid';
 
 const nanoid = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYVabcdefghijklmnopqrstuvwxyz', 10);
@@ -23,9 +23,9 @@ export const getButton = async (buttonLoc) => {
       const loc = path.join(parentLoc, file);
       const buttonData = await (await readFile(loc)).toString();
 
-      let { data, content } = matter(buttonData);
+      let { data, content } = { ...matter(buttonData) };
       // highlight the html for rendering on the button's page
-      const html = hljs.highlightAuto(content).value;
+      const html = hljs.highlight(content, { language: 'html' }).value;
       // to prevent instance of the same button classes repeating, replace
       // each ".btn" class with a random id
       const newClass = nanoid();

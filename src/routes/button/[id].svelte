@@ -10,7 +10,11 @@
   };
 </script>
 
-<ButtonSection {...data.buttons[selected].data}>
+<ButtonSection
+  meta={data.buttons[0].data.meta}
+  properties={data.buttons[selected].data.properties}
+  source={data.buttons[selected].html}
+>
   <div slot="buttons">
     {#each data.buttons as button, i}
       <div class="button-slot" on:click={() => setSelected(i)}>
@@ -29,6 +33,6 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: 30px 0;
   }
 </style>
