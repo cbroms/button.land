@@ -16,5 +16,10 @@
     "prettier-plugin-svelte": "^2.5.0",
     "svelte": "^3.44.0"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.4.0",
+    "nanoid": "^3.3.1"
+  }
 }

@@ -1,25 +1,25 @@
 <script>
-  export let enlargedBackground;
-  export let enlargedBorder;
-  export let enlargedBorderRadius;
+  export let background;
+  export let border;
+  export let borderRadius;
 </script>
 
 <div class="section-wrapper">
   <div class="section-main">
-    <div class="button-main"><slot name="button" /></div>
+    <slot name="buttons" />
   </div>
   <div
     class="section-enlarged"
-    style="border-color: {enlargedBorder}; background-color: {enlargedBackground}; border-radius: {enlargedBorderRadius};"
+    style="border: {border}; background: {background}; border-radius: {borderRadius};"
   >
-    <div class="button-enlarged"><slot name="button" /></div>
+    <div class="button-enlarged"><slot name="button-enlarged" /></div>
   </div>
 </div>
 
 <style>
   .section-wrapper {
-    height: 600px;
-    width: 600px;
+    height: 400px;
+    width: 800px;
     display: flex;
     margin: 0 auto;
     justify-content: flex-end;
@@ -28,12 +28,14 @@
   .section-main {
     width: 300px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    align-content: center;
   }
 
   .section-enlarged {
-    width: 300px;
+    width: 375px;
     height: 100%;
     border: 1px solid;
     display: flex;
@@ -44,6 +46,8 @@
   .button-enlarged {
     transform: scale(4);
     position: relative;
-    left: 100%;
+    transform-origin: left;
+    /* left: 100%; */
+    left: 100px;
   }
 </style>
