@@ -2,13 +2,14 @@
   export let meta;
   export let properties;
   export let source;
+  export let website;
 </script>
 
 <div class="section-wrapper">
   <div class="section-main">
     <div class="section-info">
       {#if meta?.source}
-        <div>{meta.source}</div>
+        <div><a href={meta.source} target="_blank">{website}</a></div>
       {/if}
       {#if meta?.added}
         <div>{meta.added}</div>
@@ -71,6 +72,11 @@
     border-bottom: 1px solid;
     margin-bottom: 40px;
     align-self: flex-start;
+    height: 55px;
+  }
+
+  .section-info > div {
+    margin: 5px 0;
   }
 
   .section-secondary {
@@ -78,7 +84,7 @@
     width: calc(100vw - 400px);
     max-width: 750px;
     height: 100%;
-    padding-top: 40px;
+    padding-top: 55px;
   }
 
   .section-main {

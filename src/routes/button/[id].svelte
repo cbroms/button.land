@@ -4,16 +4,24 @@
   export let data;
 
   let selected = 0;
+  let website = '';
 
   const setSelected = (index) => {
     selected = index;
   };
+
+  $: website = new URL(data.buttons[0].data.meta.source).hostname;
 </script>
+
+<svelte:head>
+  <title>Button.land | {website}</title>
+</svelte:head>
 
 <ButtonSection
   meta={data.buttons[0].data.meta}
   properties={data.buttons[selected].data.properties}
   source={data.buttons[selected].html}
+  {website}
 >
   <div slot="buttons">
     {#each data.buttons as button, i}

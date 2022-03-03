@@ -1,8 +1,24 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji';
+  color: var(--text-primary);
 }
 
 * {
   box-sizing: border-box;
+}
+
+:root {
+  --text-primary: #141414;
+  --text-secondary: #6e6e6e;
+}
+
+a {
+  color: var(--text-primary);
+}
+
+a:visited {
+  color: var(--text-primary);
 }
