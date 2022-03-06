@@ -10,6 +10,14 @@ const baseLoc = path.resolve('./src/lib/db/');
 
 export const listButtons = async () => {
   const dir = await readdir(baseLoc);
+
+  // sort with most recent on top
+  dir.sort((a, b) => {
+    const dateA = new Date(a.split('-').slice(0, 3).join('-'));
+    const dateB = new Date(b.split('-').slice(0, 3).join('-'));
+    return dateB - dateA;
+  });
+
   return dir;
 };
 
@@ -29,9 +37,7 @@ export const getButton = async (buttonLoc) => {
       // to prevent instance of the same button classes repeating, replace
       // each ".btn" class with a random id
       const newClass = nanoid();
-      content = content
-        .replaceAll('.btn', `.${newClass}`)
-        .replaceAll(`class="btn"`, `class="${newClass}"`);
+      content = content.replaceAll('btn', `${newClass}`);
       buttons.push({ data, content, html });
     }
   }

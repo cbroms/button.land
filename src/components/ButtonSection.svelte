@@ -82,7 +82,7 @@
   .section-secondary {
     /* padding: 0 40px; */
     width: calc(100vw - 400px);
-    max-width: 750px;
+    max-width: 850px;
     height: 100%;
     padding-top: 55px;
   }
@@ -117,7 +117,7 @@
     /* left: 100px; */
   }
 
-  @media (max-width: 980px) {
+  @media (max-width: 1200px) {
     .section-enlarged {
       /* width: calc(100vw - 375px); */
       justify-content: flex-start;
