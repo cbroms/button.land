@@ -28,11 +28,17 @@
   <title>Button.land | {website}</title>
 </svelte:head>
 
-<ButtonScaledRotated properties={data.buttons[0].data.properties}>
+<ButtonScaled
+  scale="8"
+  rotation="-45deg"
+  offset="-200px"
+  height="500px"
+  properties={data.buttons[0].data.properties}
+>
   <div slot="button">
     {@html data.buttons[0].content}
   </div>
-</ButtonScaledRotated>
+</ButtonScaled>
 
 <div class="scaled-right">
   <div class="buttons">
@@ -51,11 +57,13 @@
     {/each}
   </div>
 
-  <ButtonScaled properties={data.buttons[selected].data.properties}>
-    <div slot="button">
-      {@html data.buttons[selected].content}
-    </div>
-  </ButtonScaled>
+  <div class="button-scaled">
+    <ButtonScaled scale="3" centered properties={data.buttons[selected].data.properties}>
+      <div slot="button">
+        {@html data.buttons[selected].content}
+      </div>
+    </ButtonScaled>
+  </div>
 
   <code>
     <pre>
@@ -92,6 +100,12 @@
     padding: 4rem;
   }
 
+  .button-scaled {
+    height: 345px;
+    width: calc(100% - var(--sidebar-width));
+    max-width: var(--content-width);
+  }
+
   .section-info {
     width: 100%;
     border-bottom: 1px solid;
@@ -101,8 +115,8 @@
   .buttons {
     width: 350px;
     position: fixed;
-    top: 2rem;
-    left: 2rem;
+    top: 6rem;
+    left: max(calc((100% - var(--window-max-width)) / 2 + 2rem), 2rem);
 
     padding: 2rem;
     display: flex;
@@ -136,6 +150,10 @@
       top: 0;
       left: 0;
       padding: 0;
+    }
+
+    .button-scaled {
+      width: 100%;
     }
 
     code {

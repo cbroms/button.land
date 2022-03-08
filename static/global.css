@@ -15,6 +15,7 @@ body {
   --text-secondary: #6e6e6e;
   --content-width: 900px;
   --sidebar-width: 350px;
+  --window-max-width: 1400px;
 }
 
 a {

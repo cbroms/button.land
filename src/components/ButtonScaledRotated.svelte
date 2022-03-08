@@ -4,11 +4,12 @@
 
 <div
   class="section-enlarged"
-  style="border: {properties.border}; background: {properties.background};"
+  style="border: {properties.border}; background: {properties.background}; border-radius: {properties.borderRadius};"
 >
   <div class="button-enlarged"><slot name="button" /></div>
 </div>
 
+<!-- style="transform: scale({scale}) rotate({rotation}); margin-bottom: {offset}; height: {height};" -->
 <style>
   .button-enlarged {
     transform: scale(8) rotate(-45deg);

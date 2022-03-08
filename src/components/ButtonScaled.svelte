@@ -1,20 +1,26 @@
 <script>
   export let properties;
+  export let scale;
+  export let rotation = '0deg';
+  export let offset = '';
+  export let height = '300px';
+  export let centered = false;
 </script>
 
 <div
   class="section-enlarged"
-  style="border: {properties.border}; background: {properties.background}; border-radius: {properties.borderRadius};"
+  style="border: {properties.border}; background: {properties.background}; border-radius: {properties.borderRadius}; height: {height};"
 >
-  <div class="button-enlarged"><slot name="button" /></div>
+  <div
+    class="button-enlarged {centered ? 'centered' : ''}"
+    style="transform: scale({scale}) rotate({rotation}); margin-bottom: {offset};"
+  >
+    <slot name="button" />
+  </div>
 </div>
 
 <style>
   .section-enlarged {
-    height: 345px;
-    width: calc(100% - var(--sidebar-width));
-    max-width: var(--content-width);
-    border: 1px solid;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,16 +28,16 @@
   }
 
   .button-enlarged {
-    transform: scale(3);
     position: relative;
+    transform-origin: left;
+  }
+
+  .centered {
     transform-origin: center;
-    /* left: 100%; */
-    /* left: 100px; */
   }
 
   @media (max-width: 900px) {
     .section-enlarged {
-      width: 100%;
       justify-content: flex-start;
     }
 
