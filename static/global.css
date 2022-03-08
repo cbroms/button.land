@@ -13,6 +13,8 @@ body {
 :root {
   --text-primary: #141414;
   --text-secondary: #6e6e6e;
+  --content-width: 900px;
+  --sidebar-width: 350px;
 }
 
 a {
