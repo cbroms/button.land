@@ -38,6 +38,18 @@ export const getButton = async (buttonLoc) => {
       // each ".btn" class with a random id
       const newClass = nanoid();
       content = content.replaceAll('btn', `${newClass}`);
+
+      // parse out the colors
+      // https://gist.github.com/olmokramer/82ccce673f86db7cda5e?permalink_comment_id=2243862#gistcomment-2243862
+      const colorReg = new RegExp(
+        /(#(?:[0-9a-f]{2}){2,4}|(#[0-9a-f]{3})|(rgb|hsl)a?\((-?\d+%?[,\s]+){2,3}\s*[\d\.]+%?\))/gi
+      );
+
+      let colors = [...content.matchAll(colorReg)];
+      colors = [...new Set(colors.map((c) => c[0]))];
+
+      data.properties.colors = colors;
+
       buttons.push({ data, content, html });
     }
   }

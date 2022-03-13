@@ -14,9 +14,16 @@
 <style>
   .button-preview {
     max-width: 600px;
-    width: 100%;
+    width: 445px;
     display: flex;
     justify-content: center;
     padding: 40px;
+  }
+
+  @media (max-width: 525px) {
+    .button-preview {
+      width: 100%;
+      /* padding: 2rem 0; */
+    }
   }
 </style>

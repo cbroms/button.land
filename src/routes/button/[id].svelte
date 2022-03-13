@@ -1,16 +1,19 @@
 <script>
-  import ButtonSection from '../../components/ButtonSection.svelte';
-  import ButtonScaledRotated from '../../components/ButtonScaledRotated.svelte';
   import ButtonScaled from '../../components/ButtonScaled.svelte';
+  import ColorSection from '../../components/ColorSection.svelte';
+
+  import { onMount } from 'svelte';
 
   export let data;
 
   let selected = 1;
   let website = '';
   let meta = null;
+  let interactiveTargetElt;
 
   const setSelected = (index) => {
     selected = index;
+    if (interactiveTargetElt) interactiveTargetElt.scrollIntoView({ behavior: 'smooth' });
   };
 
   $: website = new URL(meta.source).hostname;
@@ -22,29 +25,35 @@
       meta = data.buttons[0].data.meta;
     }
   }
+
+  onMount(() => {
+    if (data.buttons[0].data.meta.background && data.buttons[0].data.meta.color)
+      document.documentElement.style.cssText = `--background:${data.buttons[0].data.meta.background};--text-primary:${data.buttons[0].data.meta.color};`;
+  });
 </script>
 
 <svelte:head>
   <title>Button.land | {website}</title>
 </svelte:head>
 
-<ButtonScaled
-  scale="8"
-  rotation="-45deg"
-  offset="-200px"
-  height="500px"
-  properties={data.buttons[0].data.properties}
->
-  <div slot="button">
-    {@html data.buttons[0].content}
-  </div>
-</ButtonScaled>
-
+<div class="top">
+  <ButtonScaled
+    scale="8"
+    rotation="-45deg"
+    offset="-200px"
+    height="500px"
+    properties={data.buttons[0].data.properties}
+  >
+    <div slot="button">
+      {@html data.buttons[0].content}
+    </div>
+  </ButtonScaled>
+</div>
 <div class="scaled-right">
   <div class="buttons">
     <div class="section-info">
       {#if meta?.source}
-        <div><a href={meta.source} target="_blank">{website}</a></div>
+        <h3><a href={meta.source} target="_blank">{website}</a></h3>
       {/if}
       {#if meta?.added}
         <div>{meta.added}</div>
@@ -57,7 +66,7 @@
     {/each}
   </div>
 
-  <div class="button-scaled">
+  <div class=" column-item button-scaled" bind:this={interactiveTargetElt}>
     <ButtonScaled scale="3" centered properties={data.buttons[selected].data.properties}>
       <div slot="button">
         {@html data.buttons[selected].content}
@@ -65,51 +74,52 @@
     </ButtonScaled>
   </div>
 
-  <code>
-    <pre>
-        {@html data.buttons[selected].html}
-    </pre>
-  </code>
+  <div class="column-item">
+    <ColorSection colors={data.buttons[selected].data.properties.colors} />
+  </div>
+
+  <div class="column-item">
+    <code>
+      <pre>
+          {@html data.buttons[selected].html}
+      </pre>
+    </code>
+  </div>
 </div>
 
-<!-- 
-<ButtonSection
-  meta={data.buttons[0].data.meta}
-  properties={data.buttons[selected].data.properties}
-  source={data.buttons[selected].html}
-  {website}
->
-  <div slot="buttons">
-    {#each data.buttons as button, i}
-      <div class="button-slot" on:click={() => setSelected(i)}>
-        {@html button.content}
-      </div>
-    {/each}
-  </div>
-
-  <div slot="button-enlarged">
-    {@html data.buttons[selected].content}
-  </div>
-</ButtonSection> -->
 <style>
+  h3 {
+    margin-bottom: 0.75rem;
+  }
+  .top {
+    margin-top: 4rem;
+  }
   .scaled-right {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
     justify-content: flex-end;
     padding: 4rem;
+    padding-top: 0;
   }
 
   .button-scaled {
+    padding-top: 2rem;
     height: 345px;
+  }
+
+  .column-item {
     width: calc(100% - var(--sidebar-width));
     max-width: var(--content-width);
+    display: block;
+    margin-top: 2rem;
   }
 
   .section-info {
     width: 100%;
     border-bottom: 1px solid;
     margin-bottom: 2rem;
+    padding-top: 2rem;
   }
 
   .buttons {
@@ -130,12 +140,9 @@
   }
 
   code {
-    margin-top: 2rem;
-    display: block;
-    max-width: var(--content-width);
-    width: calc(100% - var(--sidebar-width));
     padding: 0 20px;
     background-color: #eeeeee;
+    display: block;
   }
 
   pre {
@@ -152,7 +159,7 @@
       padding: 0;
     }
 
-    .button-scaled {
+    .column-item {
       width: 100%;
     }
 
