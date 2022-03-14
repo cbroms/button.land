@@ -7,11 +7,24 @@
   export let data;
 
   let website = '';
+  let height = 300;
+  let offset = 0;
 
   $: website = new URL(data[0].buttons[0].data.meta.source).hostname;
 
+  const setHeaderHeight = () => {
+    height = window.innerWidth < 900 ? 500 : 300;
+    offset = window.innerWidth < 900 ? -240 : 0;
+  };
+
   onMount(() => {
     document.documentElement.style.cssText = `--background:#fff;--text-primary:#000;`;
+
+    setHeaderHeight();
+
+    window.onresize = () => {
+      setHeaderHeight();
+    };
   });
 </script>
 
@@ -20,7 +33,12 @@
 </svelte:head>
 
 <a href="/button/{data[0].id}" class="button-link top">
-  <ButtonScaled properties={data[0].buttons[0].data.properties} scale="4">
+  <ButtonScaled
+    properties={data[0].buttons[0].data.properties}
+    scale="4"
+    height="{height}px"
+    offset="{offset}px"
+  >
     <div slot="button">
       {@html data[0].buttons[0].content}
     </div>
@@ -66,13 +84,15 @@
   }
 
   .top {
-    margin-top: 2rem;
+    margin: 2rem 0;
   }
 
   .title {
     position: absolute;
     top: 6rem;
     left: 4rem;
+    word-break: break-all;
+    padding-right: 2rem;
   }
 
   .title-decorator {
