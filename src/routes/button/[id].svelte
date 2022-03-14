@@ -92,7 +92,7 @@
     margin-bottom: 0.75rem;
   }
   .top {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
   .scaled-right {
     display: flex;
@@ -117,6 +117,7 @@
 
   .section-info {
     width: 100%;
+    padding-bottom: 0.5rem;
     border-bottom: 1px solid;
     margin-bottom: 2rem;
     padding-top: 2rem;
@@ -125,7 +126,7 @@
   .buttons {
     width: 350px;
     position: fixed;
-    top: 6rem;
+    top: 4rem;
     left: max(calc((100% - var(--window-max-width)) / 2 + 2rem), 2rem);
 
     padding: 2rem;

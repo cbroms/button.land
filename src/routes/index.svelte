@@ -67,7 +67,7 @@
   }
 
   .top {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
 
   .title {
@@ -78,6 +78,7 @@
 
   .title-decorator {
     border-bottom: 1px solid;
+    padding-bottom: 0.5rem;
   }
 
   @media (max-width: 1400px) {
