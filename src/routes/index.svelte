@@ -62,7 +62,6 @@
 
   .button-link {
     display: block;
-    margin-bottom: 2rem;
     position: relative;
   }
 
