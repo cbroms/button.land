@@ -92,14 +92,14 @@
     margin-bottom: 0.75rem;
   }
   .top {
-    margin-top: 2rem;
+    margin: 0 2rem;
   }
   .scaled-right {
     display: flex;
     width: 100%;
     flex-wrap: wrap;
     justify-content: flex-end;
-    padding: 4rem;
+    padding: 2rem;
     padding-top: 0;
   }
 
@@ -120,16 +120,16 @@
     padding-bottom: 0.5rem;
     border-bottom: 1px solid;
     margin-bottom: 2rem;
-    padding-top: 2rem;
   }
 
   .buttons {
     width: 350px;
     position: fixed;
-    top: 4rem;
-    left: max(calc((100% - var(--window-max-width)) / 2 + 2rem), 2rem);
+    top: 6rem;
+    left: max(calc((100% - var(--window-max-width)) / 2 + 5rem), 5rem);
 
     padding: 2rem;
+    padding-top: 0;
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 2rem;
@@ -158,6 +158,7 @@
       top: 0;
       left: 0;
       padding: 0;
+      margin-top: 2rem;
     }
 
     .column-item {
@@ -166,6 +167,14 @@
 
     code {
       width: 100%;
+    }
+
+    .scaled-right {
+      padding: 0;
+    }
+
+    .top {
+      margin: 0;
     }
   }
 </style>

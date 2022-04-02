@@ -4,7 +4,8 @@
 
 <style>
   .wrapper {
-    max-width: var(--window-max-width);
+    max-width: calc(var(--window-max-width) + 1rem);
+    padding: 1rem;
     margin: 0 auto;
   }
 </style>

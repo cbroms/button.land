@@ -1,3 +1,6 @@
+<!-- <script context="module">
+  export const hydrate = false;
+</script> -->
 <script>
   import ButtonSectionPreview from '../components/ButtonSectionPreview.svelte';
   import ButtonScaled from '../components/ButtonScaled.svelte';
@@ -13,7 +16,7 @@
   $: website = new URL(data[0].buttons[0].data.meta.source).hostname;
 
   const setHeaderHeight = () => {
-    height = window.innerWidth < 900 ? 500 : 300;
+    height = window.innerWidth < 900 ? 600 : 300;
     offset = window.innerWidth < 900 ? -240 : 0;
   };
 
@@ -32,37 +35,41 @@
   <title>Button.land</title>
 </svelte:head>
 
-<a href="/button/{data[0].id}" class="button-link top">
-  <ButtonScaled
-    properties={data[0].buttons[0].data.properties}
-    scale="4"
-    height="{height}px"
-    offset="{offset}px"
-  >
-    <div slot="button">
-      {@html data[0].buttons[0].content}
+<a href="/button/{data[0].id}">
+  <div class="button-link top">
+    <ButtonScaled
+      properties={data[0].buttons[0].data.properties}
+      scale="4"
+      height="{height}px"
+      offset="{offset}px"
+    >
+      <div slot="button">
+        {@html data[0].buttons[0].content}
+      </div>
+    </ButtonScaled>
+    <div class="title">
+      <div class="title-decorator">Button of the week</div>
+      {#if data[0].buttons[0].data.meta.source}
+        <h1>{website}</h1>
+      {/if}
+      {#if data[0].buttons[0].data.meta.added}
+        <div>{data[0].buttons[0].data.meta.added}</div>
+      {/if}
     </div>
-  </ButtonScaled>
-  <div class="title">
-    <div class="title-decorator">Button of the week</div>
-    {#if data[0].buttons[0].data.meta.source}
-      <h1>{website}</h1>
-    {/if}
-    {#if data[0].buttons[0].data.meta.added}
-      <div>{data[0].buttons[0].data.meta.added}</div>
-    {/if}
   </div>
 </a>
 
 <div class="buttons">
   {#each data as buttonSection, i}
     {#if i !== -1}
-      <a href="/button/{buttonSection.id}" class="button-link button-preview">
-        <ButtonSectionPreview {...buttonSection.buttons[0].data.properties}>
-          <div slot="button">
-            {@html buttonSection.buttons[0].content}
-          </div>
-        </ButtonSectionPreview>
+      <a href="/button/{buttonSection.id}">
+        <div class="button-link button-preview">
+          <ButtonSectionPreview {...buttonSection.buttons[0].data.properties}>
+            <div slot="button">
+              {@html buttonSection.buttons[0].content}
+            </div>
+          </ButtonSectionPreview>
+        </div>
       </a>
     {/if}
   {/each}
@@ -71,11 +78,10 @@
 <style>
   .buttons {
     display: flex;
-    gap: 2rem;
     align-content: flex-start;
     flex-wrap: wrap;
     width: 100%;
-    margin: 0 auto;
+    margin-top: 1rem;
   }
 
   .button-link {
@@ -83,8 +89,13 @@
     position: relative;
   }
 
+  .button-preview {
+    margin: 2rem;
+    margin-bottom: 1rem;
+  }
+
   .top {
-    margin: 2rem 0;
+    margin: 0 2rem;
   }
 
   .title {
@@ -102,13 +113,25 @@
 
   @media (max-width: 1400px) {
     .buttons {
-      padding: 2rem;
+      /* padding: 2rem; */
       justify-content: center;
     }
   }
 
   @media (max-width: 525px) {
     .button-preview {
+      width: 100%;
+    }
+
+    .button-link {
+      margin: 1rem 0;
+    }
+
+    .top {
+      margin: 0;
+    }
+
+    a {
       width: 100%;
     }
   }

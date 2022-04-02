@@ -13,11 +13,12 @@
 
 <style>
   .button-preview {
-    max-width: 600px;
-    width: 445px;
+    width: 397px;
+    height: 110px;
     display: flex;
     justify-content: center;
-    padding: 40px;
+    align-items: center;
+    padding: 2rem;
   }
 
   @media (max-width: 525px) {
