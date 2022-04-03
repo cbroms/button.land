@@ -47,7 +47,7 @@
         {@html data[0].buttons[0].content}
       </div>
     </ButtonScaled>
-    <div class="title">
+    <div class="title" style="color: {data[0].buttons[0].data.meta.color};">
       <div class="title-decorator">Button of the week</div>
       {#if data[0].buttons[0].data.meta.source}
         <h1>{website}</h1>
@@ -61,7 +61,7 @@
 
 <div class="buttons">
   {#each data as buttonSection, i}
-    {#if i !== -1}
+    {#if i !== 0}
       <a href="/button/{buttonSection.id}">
         <div class="button-link button-preview">
           <ButtonSectionPreview {...buttonSection.buttons[0].data.properties}>
