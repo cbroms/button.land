@@ -5,9 +5,10 @@
   import { onMount } from 'svelte';
 
   export let data;
+  export let id;
+  export let website;
 
   let selected = 1;
-  let website = '';
   let meta = null;
   let interactiveTargetElt;
 
@@ -15,8 +16,6 @@
     selected = index;
     if (interactiveTargetElt) interactiveTargetElt.scrollIntoView({ behavior: 'smooth' });
   };
-
-  $: website = new URL(meta.source).hostname;
 
   $: {
     if (data.buttons[selected].data.meta) {
@@ -33,7 +32,23 @@
 </script>
 
 <svelte:head>
-  <title>Button.land | {website}</title>
+  <title>button.land | {website}</title>
+  <meta name="title" content="button.land | {website}" />
+  <meta property="twitter:title" content="button.land | {website}" />
+  <meta property="og:title" content="button.land | {website}" />
+
+  <meta name="description" content="Find {website} in button.land" />
+  <meta property="og:description" content="Fina {website} in button.land" />
+  <meta property="twitter:description" content="Find {website} in button.land" />
+
+  <meta property="og:type" content="website" />
+  <meta property="twitter:card" content="summary_large_image" />
+
+  <meta property="og:url" content="https://button.land/button/{id}/" />
+  <meta property="twitter:url" content="https://button.land/button/{id}/" />
+
+  <meta property="og:image" content="https://button.land/social/{id}.png" />
+  <meta property="twitter:image" content="https://button.land/social/{id}.png" />
 </svelte:head>
 
 <div class="top">

@@ -32,18 +32,22 @@
 </script>
 
 <svelte:head>
-  <title>Button.land</title>
-  <meta name="title" content="Button.land" />
-  <meta name="description" content="Lots of buttons." />
+  <title>button.land</title>
+  <meta name="title" content="button.land" />
+  <meta property="twitter:title" content="button.land" />
+  <meta property="og:title" content="button.land" />
+
+  <meta name="description" content="Find many buttons in button.land" />
+  <meta property="og:description" content="Find many buttons in button.land" />
+  <meta property="twitter:description" content="Find many buttons in button.land" />
+
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://button.land/" />
-  <meta property="og:title" content="Button.land" />
-  <meta property="og:description" content="Lots of buttons." />
-  <meta property="og:image" content="https://button.land/social.png" />
   <meta property="twitter:card" content="summary_large_image" />
+
+  <meta property="og:url" content="https://button.land/" />
   <meta property="twitter:url" content="https://button.land/" />
-  <meta property="twitter:title" content="Button.land" />
-  <meta property="twitter:description" content="Lots of buttons." />
+
+  <meta property="og:image" content="https://button.land/social.png" />
   <meta property="twitter:image" content="https://button.land/social.png" />
 </svelte:head>
 
