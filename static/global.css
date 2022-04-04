@@ -5,6 +5,7 @@ body {
     'Apple Color Emoji', 'Segoe UI Emoji';
   color: var(--text-primary);
   background: var(--background);
+  transition: background 0.2s, color 0.2s;
 }
 
 * {

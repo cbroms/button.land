@@ -17,6 +17,8 @@
     if (interactiveTargetElt) interactiveTargetElt.scrollIntoView({ behavior: 'smooth' });
   };
 
+  $: website = new URL(meta.source).hostname;
+
   $: {
     if (data.buttons[selected].data.meta) {
       meta = data.buttons[selected].data.meta;
@@ -32,14 +34,14 @@
 </script>
 
 <svelte:head>
-  <title>button.land | {website}</title>
-  <meta name="title" content="button.land | {website}" />
-  <meta property="twitter:title" content="button.land | {website}" />
-  <meta property="og:title" content="button.land | {website}" />
+  <title>{website} in button.land</title>
+  <meta name="title" content="{website} in button.land" />
+  <meta property="twitter:title" content="{website} in button.land" />
+  <meta property="og:title" content="{website} in button.land " />
 
-  <meta name="description" content="Find {website} in button.land" />
-  <meta property="og:description" content="Fina {website} in button.land" />
-  <meta property="twitter:description" content="Find {website} in button.land" />
+  <meta name="description" content="Explore buttons from {website} in button.land" />
+  <meta property="og:description" content="Explore buttons from {website} in button.land" />
+  <meta property="twitter:description" content="Explore buttons from {website} in button.land" />
 
   <meta property="og:type" content="website" />
   <meta property="twitter:card" content="summary_large_image" />
@@ -54,7 +56,7 @@
 <div class="top">
   <ButtonScaled
     scale="8"
-    rotation="-45deg"
+    rotation="-35deg"
     offset="-200px"
     height="500px"
     properties={data.buttons[0].data.properties}
@@ -157,7 +159,7 @@
 
   code {
     padding: 0 20px;
-    background-color: #eeeeee;
+    background-color: #eeeeee08;
     display: block;
   }
 

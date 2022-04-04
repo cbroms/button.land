@@ -37,9 +37,9 @@
   <meta property="twitter:title" content="button.land" />
   <meta property="og:title" content="button.land" />
 
-  <meta name="description" content="Find many buttons in button.land" />
-  <meta property="og:description" content="Find many buttons in button.land" />
-  <meta property="twitter:description" content="Find many buttons in button.land" />
+  <meta name="description" content="Find buttons from around the web in button.land" />
+  <meta property="og:description" content="Find buttons from around the web in button.land" />
+  <meta property="twitter:description" content="Find buttons from around the web in button.land" />
 
   <meta property="og:type" content="website" />
   <meta property="twitter:card" content="summary_large_image" />
