@@ -6,7 +6,6 @@
     "premeta": "npm run dev &",
     "meta": "node src/lib/prebuild.js",
     "postmeta": "kill $(lsof -t -i:3000)",
-    "prebuild": "npm run meta",
     "build": "svelte-kit build",
     "package": "svelte-kit package",
     "preview": "svelte-kit preview",
